@@ -10,7 +10,9 @@ import (
 func New(cfg *config.Config) *http.Server {
 
 	mux := http.NewServeMux()
+
 	routes.RegisterRoutes(mux)
+	routes.RegisterStudentRoutes(mux)
 
 	server := &http.Server{
 		Addr:    cfg.HttpServer.Host,

@@ -8,8 +8,10 @@ import (
 
 func RegisterRoutes(mux *http.ServeMux) {
 
-	mux.HandleFunc("/", handlers.Home)
+	mux.HandleFunc("GET /", handlers.Home)
 
-	mux.HandleFunc("/health", handlers.HealthHandler)
+	mux.HandleFunc("GET /health", handlers.HealthHandler)
+
+	mux.HandleFunc("GET /about", handlers.AboutPage())
 
 }
