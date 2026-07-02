@@ -11,17 +11,17 @@ import (
 )
 
 type HttpServer struct {
-	Host    string        `yaml:"Host" env-required:"true" env-default:"localhost:2007"`
-	Timeout time.Duration `yaml:"Timeout" env-default:"10s"`
+	Host    string        `yaml:"host" env-required:"true" env-default:"localhost:2007"`
+	Timeout time.Duration `yaml:"timeout" env-default:"10s"`
 }
 
 type Config struct {
-	Env         string `yaml:"ENV" env-default:"production"`
-	StoragePath string `yaml:"Storage_Path" env-required:"true" env-default:"storage/storage.db"`
-	HttpServer  `yaml:"Http_Server" env-required:"true"`
+	Env         string `yaml:"env" env-default:"production"`
+	StoragePath string `yaml:"storage_path" env-required:"true" env-default:"storage/storage.db"`
+	HttpServer  `yaml:"http_server" env-required:"true"`
 }
 
-func ConfigImported() *Config {
+func LoadConfig() *Config {
 	var ConfigPath string
 	ConfigPath = os.Getenv("CONFIG_PATH")
 
